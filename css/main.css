@@ -3,7 +3,7 @@
   --white: #fff;
   --color_3: #eee;
   --bg_content: #f1f5f9;
-  /* --black: #fff;
+  /* --black: rgb(214, 214, 214);
   --white: #202020;
   --color_3: rgb(48 48 48);
   --bg_content: rgb(18 18 18); */
@@ -61,6 +61,40 @@ button {
 
 }
 /* end media query */
+/* btn active styling */
+
+.btn_active {
+  width: 70px;
+  height: 28px;
+  background-color: #0075ff;
+  border-radius: 16px;
+  padding: 2px;
+  position: relative;
+  transition: all 0.3s;
+}
+.btn_active .i {
+  width: 30px;
+  height: 24px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  right: 2px;
+  transition: all 0.3s;
+  color: rgb(83, 83, 83);
+}
+.inactive {
+  background-color: var(--color_3);
+}
+
+
+
+
+
+
+
 
 
 
@@ -332,11 +366,19 @@ button {
     padding: 20px 80px;
   }
 }
+.dashbord .content .dashbord_content .boxs .welcom .byo h2 {
+  text-align: center;
+  font-size: 18px;
+  color: var(--black);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
 .dashbord .content .dashbord_content .boxs .welcom .byo p {
   text-align: center;
   font-size: 18px;
   color: var(--black);
   margin-bottom: 10px;
+  font-weight: 100;
 }
 .dashbord .content .dashbord_content .boxs .welcom .btn_profile {
   padding: 40px 20px;
@@ -624,6 +666,14 @@ button {
   color: var(--black);
   text-transform: capitalize;
   text-align: center;
+}
+@media (min-width: 768px) {
+  .dashbord .content .dashbord_content .boxs .latest_news .tab .text h2 {
+    text-align: left;
+  }
+  .dashbord .content .dashbord_content .boxs .latest_news .tab .text p {
+    text-align: left;
+  }
 }
 .dashbord .content .dashbord_content .boxs .latest_news .tab .days {
   display: flex;
@@ -1196,3 +1246,384 @@ button {
   color: #fff;
 }
 /* dashbord content */
+
+
+
+
+
+
+/* settings content */
+.dashbord .content .settings_content {
+  padding: 0px 20px;
+}
+.dashbord .content .settings_content .boxs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  justify-content: center;
+  gap: 20px;
+}
+
+
+
+/* site control */
+.dashbord .content .settings_content .boxs .site_control {
+  background-color: var(--white);
+  border-radius: 14px;
+  padding: 10px 10px 20px 10px;
+}
+.dashbord .content .settings_content .boxs .site_control h1 {
+  font-size: 28px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.dashbord .content .settings_content .boxs .site_control p {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .site_control .tab {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+}
+.dashbord .content .settings_content .boxs .site_control .tab h2 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .site_control .tab p {
+  font-size: 14px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .site_control .ab_btn {
+  display: flex;
+  align-items: center;
+}
+.dashbord .content .settings_content .boxs .site_control textarea {
+  width: 100%;
+  height: 180px;
+  border: none;
+  outline: none;
+  background-color: var(--color_3);
+  font-size: 18px;
+  padding: 10px;
+  color: var(--black);
+  resize: none;
+}
+
+
+
+/* general info */
+.dashbord .content .settings_content .boxs .general_info {
+  background-color: var(--white);
+  border-radius: 14px;
+  padding: 10px 10px 20px 10px;
+}
+.dashbord .content .settings_content .boxs .general_info h1 {
+  font-size: 28px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.dashbord .content .settings_content .boxs .general_info p {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .general_info form {
+  padding: 20px 0px;
+  margin: 0;
+}
+.dashbord .content .settings_content .boxs .general_info form :nth-child(1) {
+  display: block;
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.dashbord .content .settings_content .boxs .general_info form :nth-child(3) {
+  display: block;
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.dashbord .content .settings_content .boxs .general_info form :nth-child(5) {
+  display: block;
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.dashbord .content .settings_content .boxs .general_info form :nth-child(2) {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--color_3);
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: var(--black); 
+}
+.dashbord .content .settings_content .boxs .general_info form :nth-child(4) {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--color_3);
+  font-size: 18px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: var(--black); 
+}
+.dashbord .content .settings_content .boxs .general_info form .e_c {
+  display: flex;
+}
+.dashbord .content .settings_content .boxs .general_info form .e_c :nth-child(1) {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--bg_content);
+  font-size: 18px;
+  padding: 10px;
+  color: var(--black);
+  margin: 0;
+}
+.dashbord .content .settings_content .boxs .general_info form .e_c :nth-child(2) {
+  width: fit-content;
+  background-color: transparent;
+  display: block;
+  font-size: 18px;
+  color: #0075ff;
+  text-transform: capitalize; 
+  margin: 0;
+}
+
+
+
+/* general info */
+.dashbord .content .settings_content .boxs .security_info {
+  background-color: var(--white);
+  border-radius: 14px;
+  padding: 10px 10px 20px 10px;
+}
+.dashbord .content .settings_content .boxs .security_info h1 {
+  font-size: 28px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.dashbord .content .settings_content .boxs .security_info p {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .security_info .tab {
+  display: flex;
+  column-gap: 20px;
+  padding: 20px 0px;
+  border-bottom: 1px solid var(--black);
+}
+.dashbord .content .settings_content .boxs .security_info .tab img {
+  height: 42.78px;
+}
+.dashbord .content .settings_content .boxs .security_info .tab .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dashbord .content .settings_content .boxs .security_info .tab .text h2 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: var(--black); 
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .security_info .tab .text p {
+  font-size: 14px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .security_info .tab .days {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.dashbord .content .settings_content .boxs .security_info .tab .days button {
+  font-size: 14px;
+  background-color: var(--color_3);
+  padding: 6px 10px;
+  color: var(--black);
+  text-transform: capitalize;
+  border-radius: 8px;
+}
+.dashbord .content .settings_content .boxs .security_info :nth-child(3) .days button {
+  background-color: #0075ff;
+  color: #fff;
+}
+
+
+
+/* social info */
+.dashbord .content .settings_content .boxs .social_info {
+  background-color: var(--white);
+  border-radius: 14px;
+  padding: 10px 10px 20px 10px;
+}
+.dashbord .content .settings_content .boxs .social_info h1 {
+  font-size: 28px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.dashbord .content .settings_content .boxs .social_info p {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .social_info .tab {
+  display: flex;
+  margin: 20px 0px;
+}
+.dashbord .content .settings_content .boxs .social_info .tab .i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  color: var(--black);
+  font-size: 16px;
+  border: 1px solid var(--black);
+  background-color: var(--color_3);
+}
+.dashbord .content .settings_content .boxs .social_info .tab input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: var(--color_3);
+  font-size: 18px;
+  padding: 10px;
+  color: var(--black); 
+  border-top: 1px solid var(--black);
+  border-right: 1px solid var(--black);
+  border-bottom: 1px solid var(--black);
+}
+
+
+
+/* widgets control */
+.dashbord .content .settings_content .boxs .widgets_control {
+  background-color: var(--white);
+  border-radius: 14px;
+  padding: 10px 10px 20px 10px;
+}
+.dashbord .content .settings_content .boxs .widgets_control h1 {
+  font-size: 28px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.dashbord .content .settings_content .boxs .widgets_control p {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.dashbord .content .settings_content .boxs .widgets_control .tab {
+  padding: 10px 0px;
+  display: flex;
+  column-gap: 10px;
+}
+.dashbord .content .settings_content .boxs .widgets_control label {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .widgets_control input {
+  width: 20px;
+  height: 20px;
+  accent-color: #0075ff;
+}
+
+
+
+/* backup manager */
+.dashbord .content .settings_content .boxs .backup_manager {
+  background-color: var(--white);
+  border-radius: 14px;
+  padding: 10px 10px 20px 10px;
+}
+.dashbord .content .settings_content .boxs .backup_manager h1 {
+  font-size: 28px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.dashbord .content .settings_content .boxs .backup_manager  p {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab {
+  padding: 10px 0px;
+  display: flex;
+  column-gap: 10px;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab label {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab input {
+  width: 20px;
+  height: 20px;
+  accent-color: #0075ff;
+}
+.dashbord .content .settings_content .boxs .backup_manager :nth-child(5) {
+  border-bottom: 1px solid var(--black);
+  margin-bottom: 20px;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab_boxs {
+  display: flex;
+  column-gap: 10px;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab_boxs .box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0px;
+  border: 1px solid var(--black);
+  font-size: 18px;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab_boxs .box :nth-child(1) {
+  color: var(--black);
+  margin-bottom: 10px;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab_boxs .box :nth-child(2) {
+  font-size: 18px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab_boxs > :nth-child(2) {
+  border: 2px solid #0075ff;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab_boxs > :nth-child(2) :nth-child(1) {
+  color: #0075ff;
+}
+.dashbord .content .settings_content .boxs .backup_manager .tab_boxs > :nth-child(2) :nth-child(2) {
+  color: #0075ff;
+}
+/* settings content */
