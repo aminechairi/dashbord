@@ -11,41 +11,29 @@ input.addEventListener('focus', () => {
 // menu
 let menu = document.querySelectorAll('.dashbord .menu ul li') as NodeListOf<Element>;
 let title = document.querySelectorAll('.dashbord .content .title h1')[0] as HTMLElement;
-
+let contents = [
+  document.querySelectorAll(".dashbord .content .dashbord_content")[0] as HTMLElement,
+  document.querySelectorAll(".dashbord .content .settings_content")[0] as HTMLElement,
+  document.querySelectorAll(".dashbord .content .profile_content")[0] as HTMLElement,
+  document.querySelectorAll(".dashbord .content .projects_content")[0] as HTMLElement,
+  document.querySelectorAll(".dashbord .content .courser_content")[0] as HTMLElement,
+  document.querySelectorAll(".dashbord .content .frinds_content")[0] as HTMLElement,
+  document.querySelectorAll(".dashbord .content .files_content")[0] as HTMLElement,
+  document.querySelectorAll(".dashbord .content .plans_content")[0] as HTMLElement,
+];
 for (let i = 0; i < menu.length; i++) {
-  menu[i].addEventListener('click', (e: Event) => {
+  menu[i].setAttribute("data-index", `${i}`);
+  menu[i].addEventListener('click', (e: any) => {
     for (let i = 0; i < menu.length; i++) {
         menu[i].children[0].classList.remove('active');
     }
     let el = e.currentTarget as HTMLElement;
     el.children[0].classList.add('active');
     title.innerHTML = el.children[0].children[1].innerHTML;
-  })
-}
-
-// btn active script
-for (let i = 0; i <  document.querySelectorAll(".btn_active .i").length; i++) {
-  let btn_active:{
-    btn_active: HTMLElement;
-    btn_active_i: HTMLElement;
-    status: boolean;
-  } = {
-    btn_active: document.querySelectorAll(".btn_active")[i] as HTMLMapElement,
-    btn_active_i: document.querySelectorAll(".btn_active .i")[i] as HTMLMapElement,
-    status: true,
-  }
-  btn_active.btn_active.addEventListener("click", () => {
-    if (btn_active.status == true) {
-      btn_active.btn_active_i.style.right = "38px";
-      btn_active.btn_active_i.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
-      btn_active.status = false;
-      btn_active.btn_active.classList.add("inactive");
-    } else {
-      btn_active.btn_active_i.style.right = "2px";
-      btn_active.btn_active_i.innerHTML = `<i class="fa-solid fa-check"></i>`;
-      btn_active.status = true;
-      btn_active.btn_active.classList.remove("inactive");
+    for (let i = 0; i < contents.length; i++) {
+      contents[i] .style.display = "none";
     }
+    contents[Number(el.dataset.index)].style.display = "block";
   })
 }
 
@@ -72,3 +60,43 @@ for (let i = 0; i < backup_manager.backup_manager.length; i++) {
     p.style.color = "#0075ff";
   })
 }
+
+// version 
+let version_black_status: boolean = true;
+let add_property_in_fill_css = document.styleSheets[0].cssRules[0] as CSSStyleRule;
+let btn_active = document.querySelectorAll(".btn_active")[0] as HTMLMapElement;
+let btn_active_i = document.querySelectorAll(".btn_active .i")[0] as HTMLMapElement;
+if (localStorage.getItem("version_black_status") == "false") {
+  add_property_in_fill_css.style.setProperty("--black", "rgb(214, 214, 214)", "important");
+  add_property_in_fill_css.style.setProperty("--white", "#202020", "important");
+  add_property_in_fill_css.style.setProperty("--color_3", "rgb(48 48 48)", "important");
+  add_property_in_fill_css.style.setProperty("--bg_content", "rgb(18 18 18)", "important");
+  version_black_status = false;
+  localStorage.setItem("version_black_status", `${version_black_status}`);
+  btn_active_i.style.right = "38px";
+  btn_active_i.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+  btn_active.classList.add("inactive");
+}
+document.querySelectorAll(".btn_active")[0].addEventListener("click", () => {
+  if (version_black_status == true) {
+    add_property_in_fill_css.style.setProperty("--black", "rgb(214, 214, 214)", "important");
+    add_property_in_fill_css.style.setProperty("--white", "#202020", "important");
+    add_property_in_fill_css.style.setProperty("--color_3", "rgb(48 48 48)", "important");
+    add_property_in_fill_css.style.setProperty("--bg_content", "rgb(18 18 18)", "important");
+    version_black_status = false;
+    localStorage.setItem("version_black_status", `${version_black_status}`);
+    btn_active_i.style.right = "38px";
+    btn_active_i.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    btn_active.classList.add("inactive");
+  } else {
+    add_property_in_fill_css.style.removeProperty("--black");
+    add_property_in_fill_css.style.removeProperty("--white");
+    add_property_in_fill_css.style.removeProperty("--color_3");
+    add_property_in_fill_css.style.removeProperty("--bg_content");
+    version_black_status = true;
+    localStorage.setItem("version_black_status", `${version_black_status}`);
+    btn_active_i.style.right = "2px";
+    btn_active_i.innerHTML = `<i class="fa-solid fa-check"></i>`;
+    btn_active.classList.remove("inactive");
+  }
+})
