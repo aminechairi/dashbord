@@ -1,67 +1,59 @@
 // dashbord input search
-let ab_input = document.querySelectorAll('.dashbord .content .nav_page .input .ab_input')[0] as HTMLDivElement;
-let input = document.querySelectorAll('.dashbord .content .nav_page .input .ab_input input')[0] as HTMLInputElement;
-input.addEventListener('focus', () => {
-  ab_input.style.width = '100%';
-  input.addEventListener('blur', () => {
-    ab_input.style.width = '140px';
+let input_search =  {
+  ab_input: document.querySelectorAll('.dashbord .content .nav_page .input .ab_input')[0] as HTMLDivElement,
+  input: document.querySelectorAll('.dashbord .content .nav_page .input .ab_input input')[0] as HTMLInputElement,
+}
+input_search.input.addEventListener('focus', () => {
+  input_search.ab_input.style.width = '100%';
+  input_search.input.addEventListener('blur', () => {
+    input_search.ab_input.style.width = '140px';
   });
 });
 
-// menu
-let menu = document.querySelectorAll('.dashbord .menu ul li') as NodeListOf<Element>;
-let title = document.querySelectorAll('.dashbord .content .title h1')[0] as HTMLElement;
-let contents = [
-  document.querySelectorAll(".dashbord .content .dashbord_content")[0] as HTMLElement,
-  document.querySelectorAll(".dashbord .content .settings_content")[0] as HTMLElement,
-  document.querySelectorAll(".dashbord .content .profile_content")[0] as HTMLElement,
-  document.querySelectorAll(".dashbord .content .projects_content")[0] as HTMLElement,
-  document.querySelectorAll(".dashbord .content .courser_content")[0] as HTMLElement,
-  document.querySelectorAll(".dashbord .content .frinds_content")[0] as HTMLElement,
-  document.querySelectorAll(".dashbord .content .files_content")[0] as HTMLElement,
-  document.querySelectorAll(".dashbord .content .plans_content")[0] as HTMLElement,
-];
-for (let i = 0; i < menu.length; i++) {
-  menu[i].setAttribute("data-index", `${i}`);
-  menu[i].addEventListener('click', (e: any) => {
-    for (let i = 0; i < menu.length; i++) {
-        menu[i].children[0].classList.remove('active');
+// switch content
+let switch_content = {
+  menu: document.querySelectorAll('.dashbord .menu ul li') as NodeListOf<Element>,
+  title: document.querySelectorAll('.dashbord .content .title h1')[0] as HTMLElement,
+  contents: [
+    document.querySelectorAll(".dashbord .content .dashbord_content")[0] as HTMLElement,
+    document.querySelectorAll(".dashbord .content .settings_content")[0] as HTMLElement,
+    document.querySelectorAll(".dashbord .content .profile_content")[0] as HTMLElement,
+    document.querySelectorAll(".dashbord .content .projects_content")[0] as HTMLElement,
+    document.querySelectorAll(".dashbord .content .courser_content")[0] as HTMLElement,
+    document.querySelectorAll(".dashbord .content .frinds_content")[0] as HTMLElement,
+    document.querySelectorAll(".dashbord .content .files_content")[0] as HTMLElement,
+    document.querySelectorAll(".dashbord .content .plans_content")[0] as HTMLElement,
+  ],
+}
+if (sessionStorage.getItem(`display_content`)) {
+  for (let i = 0; i < switch_content.contents.length; i++) {
+    switch_content.contents[i].style.display = `none`;
+    switch_content.menu[i].children[0].classList.remove(`active`);
+  }
+  switch_content.contents[Number(sessionStorage.getItem(`display_content`))].style.display = `block`;
+  switch_content.menu[Number(sessionStorage.getItem(`display_content`))].children[0].classList.add(`active`);
+  switch_content.title.innerHTML = switch_content.menu[Number(sessionStorage.getItem(`display_content`))].children[0].children[1].innerHTML;
+} else {
+  switch_content.contents[0].style.display = `block`;
+  switch_content.menu[0].children[0].classList.add(`active`);
+  switch_content.title.innerHTML = switch_content.menu[0].children[0].children[1].innerHTML;
+}
+sessionStorage.clear()
+for (let i = 0; i < switch_content.menu.length; i++) {
+  switch_content.menu[i].setAttribute(`data-index`, `${i}`);
+  switch_content.menu[i].addEventListener(`click`, () => {
+    for (let i = 0; i < switch_content.menu.length; i++) {
+      switch_content.menu[i].children[0].classList.remove(`active`);
+      switch_content.contents[i].style.display = `none`;
     }
-    let el = e.currentTarget as HTMLElement;
-    el.children[0].classList.add('active');
-    title.innerHTML = el.children[0].children[1].innerHTML;
-    for (let i = 0; i < contents.length; i++) {
-      contents[i] .style.display = "none";
-    }
-    contents[Number(el.dataset.index)].style.display = "block";
+    switch_content.menu[i].children[0].classList.add(`active`);
+    switch_content.title.innerHTML = switch_content.menu[i].children[0].children[1].innerHTML;
+    switch_content.contents[Number(switch_content.menu[i].getAttribute(`data-index`))].style.display = `block`;
+    sessionStorage.setItem(`display_content`, switch_content.menu[i].getAttribute(`data-index`) as string);
   })
 }
 
-// Ssettings 
-// backup manager
-let backup_manager = {
-  backup_manager: document.querySelectorAll(".dashbord .content .settings_content .boxs .backup_manager .tab_boxs .box"),
-}
-for (let i = 0; i < backup_manager.backup_manager.length; i++) {
-  backup_manager.backup_manager[i].addEventListener("click", (e) => {
-    for (let i = 0; i < backup_manager.backup_manager.length; i++) {
-      let element = backup_manager.backup_manager[i] as HTMLElement;
-      element.style.border = "1px solid var(--black)";
-      let ic = element.children[0] as HTMLElement;
-      ic.style.color = "var(--black)";
-      let p = element.children[1] as HTMLElement;
-      p.style.color = "var(--black)";
-    }
-    let element = e.currentTarget as HTMLElement;
-    element.style.border = "2px solid #0075ff";
-    let ic = element.children[0] as HTMLElement;
-    ic.style.color = "#0075ff";
-    let p = element.children[1] as HTMLElement;
-    p.style.color = "#0075ff";
-  })
-}
-
-// version 
+// version black
 let version_black_status: boolean = true;
 let add_property_in_fill_css = document.styleSheets[0].cssRules[0] as CSSStyleRule;
 let btn_active = document.querySelectorAll(".btn_active")[0] as HTMLMapElement;
